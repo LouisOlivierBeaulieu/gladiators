@@ -1,10 +1,13 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using Unity.Netcode;
+
 
 [DefaultExecutionOrder(-1)]
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField] private CharacterController _characterController;
+    [SerializeField] private GameObject _cameraObject;
     [SerializeField] private Camera _playerCamera;
 
     [Header("Base Mmovement")]
@@ -21,13 +24,28 @@ public class PlayerController : MonoBehaviour
     private Vector2 _cameraRotation = Vector2.zero;
     private Vector2 _playerTargetRotation = Vector2.zero;
 
+  
+
     private void Awake()
     {
         _playerLocomotionInput = GetComponent<PlayerLocomotionInput>();
     }
 
+    private void Start()
+    {
+        if(!IsOwner)
+        {
+            _cameraObject.SetActive(false);
+        }
+    }
+
     private void Update()
     {
+        if(!IsOwner)
+        {
+            return;
+        }
+
         Vector3 cameraFowardXZ = new Vector3(
             _playerCamera.transform.forward.x, 0f, _playerCamera.transform.forward.z
             ).normalized;
@@ -49,6 +67,11 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(!IsOwner)
+        {
+            return;
+        }
+
         _cameraRotation.x += lookSenseH * _playerLocomotionInput.LookInput.x;
         _cameraRotation.y = Mathf.Clamp(_cameraRotation.y - lookSenseV * _playerLocomotionInput.LookInput.y, -lookLimitV, lookLimitV);
         _playerTargetRotation.x += transform.eulerAngles.x + lookSenseH * _playerLocomotionInput.LookInput.x;

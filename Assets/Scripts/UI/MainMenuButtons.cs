@@ -1,16 +1,17 @@
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    public void PlayGame()
+    public void ToLobby()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneLoading.Load(SceneLoading.Scene.LobbyScene);
     }
 
-    public void PlayTraining()
+    public void ToTraining()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneLoading.Load(SceneLoading.Scene.TrainingScene);
     }
 
     public void QuitGame()
