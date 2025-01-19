@@ -141,7 +141,8 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -944628639613478452, guid: 472ebb99d28b91e42b372d7a2c1335a8, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -933,7 +934,7 @@ PlayerSettings:
   cloudProjectId: 13786033-ddb0-4cd4-be57-b945818dc4cb
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: gladiators 2024-12-20_02-58-44
+  projectName: gladiators
   organizationId: louis_olivier_beaulieu
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Unity.Netcode;
 using System;
 using UnityEngine.SceneManagement;
+using Unity.Services.Lobbies;
 
 public class TestingLobbyUI : MonoBehaviour
 {
@@ -14,11 +15,11 @@ public class TestingLobbyUI : MonoBehaviour
         _createGameButton.onClick.AddListener(() =>
         {
             GameMultiplayer.Instance.StartHost();
-            SceneLoading.LoadNetwork(SceneLoading.Scene.CharacterSelectScene);
         });
 
         _joinGameButton.onClick.AddListener(() =>
         {
+
             GameMultiplayer.Instance.StartClient();
         });
     }

@@ -5,7 +5,6 @@ public class ConnectingUI : MonoBehaviour
 {
     private void Start()
     {
-        Debug.Log("bing");
         GameMultiplayer.Instance.OnTryingToJoinGame += TestingLobbyUI_OnTryingToJoinGame;
         GameMultiplayer.Instance.OnFailedToJoinGame += TestingLobbyUI_OnFailedToJoinGame;
         Hide();
